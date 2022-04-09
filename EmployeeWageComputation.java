@@ -1,4 +1,4 @@
-public class Cons {
+public class EmployeeWageComputation {
     public static void main(String[] args) {
 
         final int fullTime = 1;
