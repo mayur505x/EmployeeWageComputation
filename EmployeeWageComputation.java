@@ -5,32 +5,41 @@ public class EmployeeWageComputation {
         final int partTime = 2;
         final int wagePerHour = 20;
         final int workingDay = 20;
-
+        int totalWage = 0;
         String a = "";
 
-        int attendance = (int) (Math.random() * 100) % 3;
-        int workingHour = 0;
+        for (int i=1;i<=workingDay;i++) {
 
-        switch (attendance) {
+            int attendance = (int) (Math.random() * 100) % 3;
+            int workingHour = 0;
 
-            case fullTime:
-                workingHour = 8;
-                a = "Full time";
-                break;
+            switch (attendance) {
 
-            case partTime:
-                workingHour = 4;
-                a = "Part time";
-                break;
+                case fullTime:
+                    workingHour = 8;
+                    a = "Full time";
+                    break;
 
-            default:
-                System.out.println("Absent");
+                case partTime:
+                    workingHour = 4;
+                    a = "Part time";
+                    break;
+
+                default:
+                    System.out.println("Absent");
+
+            }
+
+            int wage = wagePerHour * workingHour;
+            System.out.println(a + " Employee daily wage: " + wage + " Rupees.");
+            totalWage = wage + totalWage;
 
         }
 
-        int wage = (wagePerHour * workingHour) * workingDay;
-        System.out.println( a + " Employee Monthly wage: " + wage + " Rupees.");
+        System.out.println("Employee monthly wage: " + totalWage + " Rupees.");
 
     }
 
 }
+
+
