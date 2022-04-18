@@ -1,12 +1,20 @@
+
 public class EmployeeWageComputation {
     public static void main(String[] args) {
+        ComputeWage.computeWage();
+    }
+}
 
-        final int fullTime = 1;
-        final int partTime = 2;
-        final int wagePerHour = 20;
-        final int workingDay = 20;
-        int totalWage = 0;
-        String a = "";
+class ComputeWage {
+
+    static final int fullTime = 1;
+    static final int partTime = 2;
+    static int wagePerHour = 20;
+    static int workingDay = 20;
+    static int totalWage = 0;
+    static String a = "";
+
+    static void computeWage() {
 
         for (int i=1;i<=workingDay;i++) {
 
