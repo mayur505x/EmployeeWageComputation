@@ -1,53 +1,25 @@
+import java.util.Scanner;
+import java.util.Random;
 
-public class EmployeeWageComputation {
-    public static void main(String[] args) {
-        ComputeWage.computeWage();
-    }
+class EmployeeWageComputation {
+	public static void main(String args[]) {
+		
+		System.out.println("Welcome !");
+		System.out.println("Enter the wagePerHour, workingHour, workingDays of compony for which  u want to calculate the wage");
+		Scanner sc = new Scanner(System.in);
+
+		int a = sc.nextInt();	
+		int b = sc.nextInt();
+		int c = sc.nextInt();
+		Wage.calculateEmpWage(a, b, c);
+	}
 }
 
-class ComputeWage {
-
-    static final int fullTime = 1;
-    static final int partTime = 2;
-    static int wagePerHour = 20;
-    static int workingDay = 20;
-    static int totalWage = 0;
-    static String a = "";
-
-    static void computeWage() {
-
-        for (int i=1;i<=workingDay;i++) {
-
-            int attendance = (int) (Math.random() * 100) % 3;
-            int workingHour = 0;
-
-            switch (attendance) {
-
-                case fullTime:
-                    workingHour = 8;
-                    a = "Full time";
-                    break;
-
-                case partTime:
-                    workingHour = 4;
-                    a = "Part time";
-                    break;
-
-                default:
-                    System.out.println("Absent");
-
-            }
-
-            int wage = wagePerHour * workingHour;
-            System.out.println(a + " Employee daily wage: " + wage + " Rupees.");
-            totalWage = wage + totalWage;
-
-        }
-
-        System.out.println("Employee monthly wage: " + totalWage + " Rupees.");
-
-    }
-
+class Wage {
+	static void calculateEmpWage(int wagePerHour, int workingHour, int workingDays) {
+		
+		int employeeWage = (wagePerHour * workingHour * workingDays);
+		System.out.println(" Employee Wage for the company = " + employeeWage);
+		
+	}	
 }
-
-
