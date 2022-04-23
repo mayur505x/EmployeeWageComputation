@@ -1,25 +1,46 @@
-import java.util.Scanner;
 import java.util.Random;
 
-class EmployeeWageComputation {
-	public static void main(String args[]) {
-		
-		System.out.println("Welcome !");
-		System.out.println("Enter the wagePerHour, workingHour, workingDays of compony for which  u want to calculate the wage");
-		Scanner sc = new Scanner(System.in);
+public class EmployeeWageComputation
+{
+    public static void calculateTotalWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
+    {
+        final int PART_TIME = 1;
+        final int FULL_TIME = 2;
+        int totalWage = 0;
+        int workingHrs = 0;
 
-		int a = sc.nextInt();	
-		int b = sc.nextInt();
-		int c = sc.nextInt();
-		Wage.calculateEmpWage(a, b, c);
-	}
-}
+        System.out.println("Details of " + companyName + " employee");
+        System.out.println("-----------------------------------------------------");
+        System.err.println("Wage per hour:" + wagePerHr);
+        System.out.println("Maximum working days:" + maxWorkingDays);
+        System.out.println("Maximum working hours:" + maxWorkingHrs);
+        System.out.printf("%5s     %5s     %5s     %5s\n", "Day", "Workinghrs", "Wage", "Total working hrs");
 
-class Wage {
-	static void calculateEmpWage(int wagePerHour, int workingHour, int workingDays) {
-		
-		int employeeWage = (wagePerHour * workingHour * workingDays);
-		System.out.println(" Employee Wage for the company = " + employeeWage);
-		
-	}	
+        for (int day = 1, totalWorkingHrs = 0; day <= maxWorkingDays
+                && totalWorkingHrs <= maxWorkingHrs; day++, totalWorkingHrs += workingHrs)
+        {
+            int empType = (int) (Math.random() * 100) % 3;
+            switch (empType)
+            {
+                case FULL_TIME:
+                    workingHrs = 8;
+                    break;
+                case PART_TIME:
+                    workingHrs = 4;
+                    break;
+                default:
+                    workingHrs = 0;
+                    break;
+            }
+            int wage = workingHrs * wagePerHr;
+            totalWage += wage;
+            System.out.printf("%5d       %5d      %5d      %5d\n", day, workingHrs, wage, totalWorkingHrs + workingHrs);
+        }
+        System.out.println("Total wage for a month of " + companyName + " employee is " + totalWage + "\n");
+    }
+    public static void main(String args[])
+    {
+        calculateTotalWage("Microsoft", 40, 15, 200);
+        calculateTotalWage("Infosys", 20, 20, 100);
+    }
 }
